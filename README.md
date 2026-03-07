@@ -119,8 +119,8 @@ Every section should feel this clear. No section should require the user to figu
 
 - [ ] **Loops welcome email** — Create a Loop in app.loops.so: trigger = Contact Created, filter source = landing-page, send welcome email immediately.
 - [ ] **OG image** — Create `public/og-image.png` (1200x630px) for social share previews. Brand gradient on dark bg, Where App wordmark, headline "Remember Every Place You've Ever Been."
-- [ ] **Social links** — Replace `href="#"` on TikTok and Instagram icons in `Footer.tsx` with real profile URLs.
-- [ ] **Sitemap** — Add `app/sitemap.ts` for Google crawl.
+- [x] **Social links** — Instagram, TikTok, X all linked with real URLs in `Footer.tsx`.
+- [x] **Sitemap** — `app/sitemap.ts` covers `/`, `/about`, `/privacy`, `/terms`, `/faq`.
 - [ ] **Favicon** — Add `app/favicon.ico` and define it in `layout.tsx` metadata.
 - [ ] **About team photo** — Replace cartoon illustration with real team photo when available.
 - [ ] **Ron founder photo** — Add headshot to the Ron founder card in `/about`.
@@ -153,6 +153,7 @@ Every section should feel this clear. No section should require the user to figu
 | `/about` | `app/about/page.tsx` | Founder story, team photo, inline `MiniSignUp` |
 | `/privacy` | `app/privacy/page.tsx` | Privacy Policy, AZ, team@where.app |
 | `/terms` | `app/terms/page.tsx` | Terms of Service, AZ governing law |
+| `/faq` | `app/faq/page.tsx` | FAQ accordion, FAQPage JSON-LD schema for GEO |
 
 All subpages use `LegalLayout` (Nav + Footer + `max-w-3xl` prose container).
 

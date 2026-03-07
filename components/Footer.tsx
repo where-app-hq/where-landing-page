@@ -18,6 +18,7 @@ export default function Footer() {
           <a href="/privacy" className="hover:text-[#0c0c0c] dark:hover:text-white transition-colors">Privacy Policy</a>
           <a href="/terms" className="hover:text-[#0c0c0c] dark:hover:text-white transition-colors">Terms</a>
           <a href="/about" className="hover:text-[#0c0c0c] dark:hover:text-white transition-colors">About</a>
+          <a href="/faq" className="hover:text-[#0c0c0c] dark:hover:text-white transition-colors">FAQ</a>
         </div>
 
         {/* Social icons */}
