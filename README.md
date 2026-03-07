@@ -273,7 +273,7 @@ The original Framer export is preserved at `where app html.htm` in this director
 - **Framework**: Next.js 14 (App Router)
 - **Styling**: Tailwind CSS
 - **Hosting**: Vercel
-- **Email capture**: Mailchimp (via API route, env vars on Vercel)
+- **Email capture**: Loops (via API route `/api/subscribe`, env var `LOOPS_API_KEY`)
 
 ### Project Structure
 
@@ -314,38 +314,56 @@ landing-page/
 
 Assets are placeholders for now — swap in real screenshots and logo when ready.
 
-### Mailchimp Setup
+### Loops Setup
 
-Set these env vars in Vercel dashboard before going live:
+Set this env var in Netlify dashboard before going live:
 
 ```
-MAILCHIMP_API_KEY=
-MAILCHIMP_AUDIENCE_ID=
-MAILCHIMP_API_SERVER=   # e.g. us1, us21
+LOOPS_API_KEY=   # from app.loops.so → Settings → API Keys
 ```
+
+To set up the welcome email in Loops: app.loops.so → **Loops** → **Create Loop** → trigger: Contact Created, filter: `source = landing-page`.
 
 ---
 
-## Deployment Steps
+## Deployment
 
-1. `npm install` in this directory
-2. `npm run dev` — verify at `localhost:3000`
-3. `npm run build` — confirm no errors
-4. Push to GitHub
-5. Connect this directory as a Vercel project
-6. Add `where.app` as custom domain in Vercel
-7. Update DNS:
-   - `@` A record → Vercel IP (`76.76.21.21`)
-   - `www` CNAME → `cname.vercel-dns.com`
-8. Add Mailchimp env vars in Vercel dashboard
-9. Redeploy and verify live
+**Platform:** Netlify (free tier)
+**Repo:** https://github.com/where-app-hq/where-landing-page (public)
+**Live preview URL:** https://dreamy-malasada-dd14ae.netlify.app/
+**Custom domain:** `where.app` (not yet pointed — DNS cutover pending)
+
+### How deploys work
+Every push to `main` triggers an automatic Netlify redeploy. No manual steps needed.
+
+### Environment variables (set in Netlify dashboard)
+| Key | Description |
+|---|---|
+| `LOOPS_API_KEY` | Loops API key for email capture |
+
+### To add a custom domain
+1. Netlify dashboard → **Domain management** → **Add domain** → `where.app`
+2. Update DNS at registrar:
+   - `@` A record → Netlify's load balancer IP (shown in Netlify UI)
+   - `www` CNAME → `dreamy-malasada-dd14ae.netlify.app`
+3. Netlify auto-provisions SSL
+
+### Local development
+```bash
+npm install
+npm run dev     # localhost:3000
+npm run build   # verify production build before pushing
+```
+
+### Why Netlify over Vercel
+Vercel requires a paid plan ($20/mo) to access GitHub org repos. Netlify allows free access to public org repos. For a landing page the performance difference is negligible.
 
 ---
 
 ## Notes
 
 - The `.htm` file is kept as a historical reference and should not be deleted.
-- The Framer site will continue serving `where.app` until DNS is cut over — no downtime risk during build phase.
+- The Framer site may still be serving `where.app` until DNS is cut over — no downtime risk during build phase.
 
 ---
 
