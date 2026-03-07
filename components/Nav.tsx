@@ -36,14 +36,15 @@ export default function Nav() {
           </a>
         </div>
 
-        {/* Mobile: CTA + hamburger */}
-        <div className="flex items-center gap-3 md:hidden">
+        {/* Mobile: CTA + theme toggle + hamburger */}
+        <div className="flex items-center gap-2 md:hidden">
           <a
             href="#signup"
             className="btn-gradient-border text-xs font-bold px-3 py-2 rounded-lg"
           >
             Get Early Access
           </a>
+          <ThemeToggle />
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="text-[#555555] dark:text-[#B8B8B8] p-1"
@@ -76,7 +77,7 @@ export default function Nav() {
           <a href="#signup" onClick={() => setMenuOpen(false)} className="text-[#555555] dark:text-[#B8B8B8] hover:text-[#0c0c0c] dark:hover:text-white text-sm font-semibold transition-colors">Get Beta Access</a>
           <div className="flex items-center gap-2 text-sm font-semibold text-[#555555] dark:text-[#B8B8B8]">
             <ThemeToggle />
-            <span>Toggle theme</span>
+            <span>Toggle light / dark mode</span>
           </div>
         </div>
       )}
