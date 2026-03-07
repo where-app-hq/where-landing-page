@@ -119,8 +119,8 @@ Every section should feel this clear. No section should require the user to figu
 
 ### SEO / GEO Hygiene (minimum, do once)
 - [ ] **OG image** — Create `public/og-image.png` (1200x630px) for social share previews. Brand gradient on dark bg, Where App wordmark, headline "Remember Every Place You've Ever Been."
-- [ ] **Favicon** — Add `app/favicon.ico` and define it in `layout.tsx` metadata.
-- [ ] **Organization schema** — Add to `app/layout.tsx` alongside existing MobileApplication schema. Include `name`, `url`, `logo`, `sameAs` pointing to Instagram/TikTok/X.
+- [x] **Favicon** — `public/favicon.png` (gradient W icon), wired in `layout.tsx`.
+- [x] **Organization schema** — Live in `app/layout.tsx` with `sameAs` pointing to Instagram/TikTok/X.
 - [ ] **Submit subpages to GSC** — URL Inspection: `/about`, `/privacy`, `/terms`, `/faq`.
 
 ### Content
