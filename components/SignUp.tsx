@@ -56,18 +56,12 @@ export default function SignUp({ current }: { current: number }) {
     <section id="signup" className="px-4 sm:px-6 py-12 sm:py-24">
       <div className="max-w-xl mx-auto">
         {/* Card */}
-        <div
-          className="rounded-4xl p-8 sm:p-10"
-          style={{
-            background: 'linear-gradient(#161616, #161616) padding-box, linear-gradient(135deg, #FCB250, #EC008C) border-box',
-            border: '1.5px solid transparent',
-          }}
-        >
+        <div className="signup-card-bg rounded-4xl p-8 sm:p-10">
           <div className="text-center mb-8">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-3 leading-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0c0c0c] dark:text-white mb-3 leading-tight">
               <span className="gradient-text">Start remembering today.</span>
             </h2>
-            <p className="text-[#aaaaaa] text-base font-medium">
+            <p className="text-[#555555] dark:text-[#aaaaaa] text-base font-medium">
               Join the beta and start saving your trips immediately.
             </p>
           </div>
@@ -80,19 +74,19 @@ export default function SignUp({ current }: { current: number }) {
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
               </div>
-              <p className="text-white font-bold text-xl mb-1">You&apos;re in!</p>
-              <p className="text-[#aaaaaa] text-sm font-medium">Check your email for your invite link.</p>
+              <p className="text-[#0c0c0c] dark:text-white font-bold text-xl mb-1">You&apos;re in!</p>
+              <p className="text-[#555555] dark:text-[#aaaaaa] text-sm font-medium">Check your email for your invite link.</p>
             </div>
           ) : status === 'duplicate' ? (
             <div className="text-center py-6">
-              <p className="text-white font-bold text-xl mb-1">You&apos;re already on the list!</p>
-              <p className="text-[#aaaaaa] text-sm font-medium">We&apos;ll reach out when your early access is ready.</p>
+              <p className="text-[#0c0c0c] dark:text-white font-bold text-xl mb-1">You&apos;re already on the list!</p>
+              <p className="text-[#555555] dark:text-[#aaaaaa] text-sm font-medium">We&apos;ll reach out when your early access is ready.</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               {/* Email input */}
               <div className="relative">
-                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#888888]">
+                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#999999] dark:text-[#888888]">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                     <polyline points="22,6 12,13 2,6" />
@@ -104,7 +98,7 @@ export default function SignUp({ current }: { current: number }) {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your Email"
-                  className="w-full bg-[#0c0c0c] border border-white/10 text-white placeholder-[#474747] rounded-2xl pl-11 pr-4 py-3.5 text-sm font-medium focus:outline-none focus:border-accent transition-colors"
+                  className="w-full bg-white dark:bg-[#0c0c0c] border border-black/10 dark:border-white/10 text-[#0c0c0c] dark:text-white placeholder-[#aaaaaa] dark:placeholder-[#474747] rounded-2xl pl-11 pr-4 py-3.5 text-sm font-medium focus:outline-none focus:border-accent transition-colors"
                 />
               </div>
 
@@ -141,13 +135,13 @@ export default function SignUp({ current }: { current: number }) {
           {/* Progress bar */}
           <div className="mt-6">
             <div className="flex justify-between items-center mb-2">
-              <span className="text-[#888888] text-xs font-semibold">Beta slots filled</span>
-              <span className="text-white text-xs font-bold">
+              <span className="text-[#777777] dark:text-[#888888] text-xs font-semibold">Beta slots filled</span>
+              <span className="text-[#0c0c0c] dark:text-white text-xs font-bold">
                 {displayCount.toLocaleString()}
-                <span className="text-[#888888] font-medium"> / {WAITLIST_TOTAL.toLocaleString()}</span>
+                <span className="text-[#777777] dark:text-[#888888] font-medium"> / {WAITLIST_TOTAL.toLocaleString()}</span>
               </span>
             </div>
-            <div className="w-full h-2 bg-[#0c0c0c] rounded-full overflow-hidden">
+            <div className="w-full h-2 bg-black/10 dark:bg-[#0c0c0c] rounded-full overflow-hidden">
               <div
                 className="h-full rounded-full"
                 style={{

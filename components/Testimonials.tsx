@@ -71,7 +71,7 @@ const testimonials = [
 
 function Card({ title, quote, display, role, location, avatar }: typeof testimonials[0]) {
   return (
-    <div className="bg-[#0c0c0c] border border-white/10 rounded-3xl px-6 py-8 flex flex-col gap-4 h-full">
+    <div className="bg-[#F5F5F5] dark:bg-[#0c0c0c] border border-black/8 dark:border-white/10 rounded-3xl px-6 py-8 flex flex-col gap-4 h-full">
       <div className="flex items-center gap-3">
         <div
           className="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0"
@@ -80,8 +80,8 @@ function Card({ title, quote, display, role, location, avatar }: typeof testimon
           {avatar}
         </div>
         <div>
-          <p className="text-white font-bold text-sm leading-none mb-0.5">{display}</p>
-          <p className="text-[#666666] text-xs font-medium">{role} · {location}</p>
+          <p className="text-[#0c0c0c] dark:text-white font-bold text-sm leading-none mb-0.5">{display}</p>
+          <p className="text-[#888888] dark:text-[#666666] text-xs font-medium">{role} · {location}</p>
         </div>
       </div>
       <div className="flex gap-0.5">
@@ -92,8 +92,8 @@ function Card({ title, quote, display, role, location, avatar }: typeof testimon
         ))}
       </div>
       <div>
-        <p className="text-white font-bold text-sm mb-1">{title}</p>
-        <p className="text-[#888888] text-xs leading-relaxed font-medium">{quote}</p>
+        <p className="text-[#0c0c0c] dark:text-white font-bold text-sm mb-1">{title}</p>
+        <p className="text-[#666666] dark:text-[#888888] text-xs leading-relaxed font-medium">{quote}</p>
       </div>
     </div>
   )
@@ -155,9 +155,9 @@ function Carousel({ perView }: { perView: number }) {
           <button
             key={i}
             onClick={() => { goTo(i); resetTimer() }}
-            className="w-2 h-2 rounded-full transition-all duration-300"
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${i === active ? '' : 'dot-inactive'}`}
             style={{
-              background: i === active ? 'linear-gradient(135deg, #FCB250, #EC008C)' : 'rgba(255,255,255,0.2)',
+              background: i === active ? 'linear-gradient(135deg, #FCB250, #EC008C)' : undefined,
               transform: i === active ? 'scale(1.3)' : 'scale(1)',
             }}
           />
@@ -169,9 +169,9 @@ function Carousel({ perView }: { perView: number }) {
 
 export default function Testimonials() {
   return (
-    <section id="reviews" className="py-12 sm:py-20 bg-[#161616]">
+    <section id="reviews" className="py-12 sm:py-20 bg-white dark:bg-[#161616]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-white text-center mb-12 leading-tight">
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0c0c0c] dark:text-white text-center mb-12 leading-tight">
           Our users <span className="gradient-text">love us.</span>
         </h2>
 

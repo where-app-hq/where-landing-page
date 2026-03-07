@@ -13,12 +13,12 @@ export default function Hero() {
 
           {/* Text content */}
           <div className="flex-1 text-center lg:text-left mt-6 lg:mt-0">
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight text-white mb-4">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight text-[#0c0c0c] dark:text-white mb-4">
               Go Anywhere.{' '}
               <span className="gradient-text">Come Back to Everything.</span>
             </h1>
 
-            <p className="text-[#aaaaaa] text-sm sm:text-base leading-relaxed mb-6 max-w-sm sm:max-w-lg mx-auto lg:mx-0 font-medium">
+            <p className="text-[#555555] dark:text-[#aaaaaa] text-sm sm:text-base leading-relaxed mb-6 max-w-sm sm:max-w-lg mx-auto lg:mx-0 font-medium">
               Where App is a free app that turns every trip into an encrypted wayline, your personal memory of your experiences.
             </p>
 
@@ -29,7 +29,7 @@ export default function Hero() {
               >
                 Save Your First Trip. It&apos;s Free.
               </a>
-              <p className="text-[#666666] text-xs font-medium">
+              <p className="text-[#888888] dark:text-[#666666] text-xs font-medium">
                 Free. No account required. iPhone only.
               </p>
             </div>

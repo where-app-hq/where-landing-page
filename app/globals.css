@@ -12,6 +12,11 @@ html {
 }
 
 body {
+  background-color: #F5F5F5;
+  color: #0c0c0c;
+}
+
+.dark body {
   background-color: #0c0c0c;
   color: #E2E2E2;
 }
@@ -70,14 +75,21 @@ body {
     box-shadow: 0 0 40px rgba(236, 0, 140, 0.3);
   }
 
-  /* Gradient border button — dark bg + brand gradient outline */
+  /* Gradient border button — adapts to light/dark */
   .btn-gradient-border {
+    background:
+      linear-gradient(#F5F5F5, #F5F5F5) padding-box,
+      linear-gradient(135deg, #EC008C, #FCB250) border-box;
+    border: 1.5px solid transparent;
+    color: #EC008C;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .dark .btn-gradient-border {
     background:
       linear-gradient(#161616, #161616) padding-box,
       linear-gradient(135deg, #EC008C, #FCB250) border-box;
-    border: 1.5px solid transparent;
     color: #ffffff;
-    transition: box-shadow 0.2s ease;
   }
 
   .btn-gradient-border:hover {
@@ -95,4 +107,29 @@ body {
     opacity: 0.9;
     box-shadow: 0 0 24px rgba(236, 0, 140, 0.4);
   }
+}
+
+/* Carousel inactive dot */
+.dot-inactive {
+  background: rgba(0, 0, 0, 0.15);
+}
+.dark .dot-inactive {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Announcement bar background — adapts to light/dark */
+.announcement-bg {
+  background: linear-gradient(135deg, rgba(252,178,80,0.12) 0%, rgba(236,0,140,0.12) 100%), #F5F5F5;
+}
+.dark .announcement-bg {
+  background: linear-gradient(135deg, rgba(252,178,80,0.08) 0%, rgba(236,0,140,0.08) 100%), #0c0c0c;
+}
+
+/* SignUp card gradient border — adapts to light/dark */
+.signup-card-bg {
+  background: linear-gradient(#ffffff, #ffffff) padding-box, linear-gradient(135deg, #FCB250, #EC008C) border-box;
+  border: 1.5px solid transparent;
+}
+.dark .signup-card-bg {
+  background: linear-gradient(#161616, #161616) padding-box, linear-gradient(135deg, #FCB250, #EC008C) border-box;
 }

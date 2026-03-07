@@ -52,58 +52,22 @@ const devices = [
 
 export default function WhereBot() {
   return (
-    <section id="wherebot" className="px-4 sm:px-6 py-12 sm:py-20 bg-[#0a0a0a]">
+    <section id="wherebot" className="px-4 sm:px-6 py-12 sm:py-20 bg-[#ECECEC] dark:bg-[#0a0a0a]">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-white text-center mb-12 leading-tight">
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0c0c0c] dark:text-white text-center mb-12 leading-tight">
           Meet <span className="gradient-text">WhereBot.</span>
         </h2>
-
-        {/* Try WhereBot — interactive chat stub (commented out, ship when WhereBot API is ready)
-        <div className="mb-10 max-w-2xl mx-auto">
-          <p className="text-center text-xs font-bold text-white/40 uppercase tracking-widest mb-3">Try it yourself!</p>
-          <div
-            className="relative rounded-3xl overflow-hidden p-px"
-            style={{ background: 'linear-gradient(135deg, #EC008C, #FCB250)' }}
-          >
-            <div
-              className="relative rounded-[23px] px-4 py-3 flex items-center gap-3 overflow-hidden"
-              style={{
-                background: 'linear-gradient(135deg, #EC008C 0%, #c4006e 30%, #f07020 70%, #FCB250 100%)',
-              }}
-            >
-              <div
-                className="pointer-events-none absolute inset-0 opacity-10"
-                style={{
-                  backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)',
-                  backgroundSize: '18px 18px',
-                }}
-              />
-              <div className="w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center bg-white/20 z-10">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
-                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="white" />
-                </svg>
-              </div>
-              <input
-                type="text"
-                placeholder="Ask WhereBot anything..."
-                className="relative z-10 flex-1 bg-transparent text-sm text-white placeholder-white/50 outline-none font-medium"
-              />
-              <span className="relative z-10 text-[10px] font-bold text-white/50 flex-shrink-0">Coming soon</span>
-            </div>
-          </div>
-        </div>
-        */}
 
         {/* Chat bubbles — 2 cards side by side on lg+ */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           {scenarios.slice(0, 2).map((s) => (
             <div
               key={s.chip}
-              className="bg-[#111111] border border-white/10 rounded-3xl p-6 flex flex-col gap-4"
+              className="bg-white dark:bg-[#111111] border border-black/8 dark:border-white/10 rounded-3xl p-6 flex flex-col gap-4"
             >
               {/* Context chip */}
-              <span className="self-start text-[10px] font-semibold text-[#666666] bg-white/5 rounded-full px-3 py-1">
+              <span className="self-start text-[10px] font-semibold text-[#777777] dark:text-[#666666] bg-black/5 dark:bg-white/5 rounded-full px-3 py-1">
                 {s.chip}
               </span>
 
@@ -127,7 +91,7 @@ export default function WhereBot() {
                     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="white" />
                   </svg>
                 </div>
-                <div className="max-w-[85%] bg-[#1a1a1a] border border-white/10 rounded-2xl rounded-tl-sm px-4 py-3 text-sm font-medium text-[#cccccc]">
+                <div className="max-w-[85%] bg-[#F5F5F5] dark:bg-[#1a1a1a] border border-black/8 dark:border-white/10 rounded-2xl rounded-tl-sm px-4 py-3 text-sm font-medium text-[#333333] dark:text-[#cccccc]">
                   <span className="gradient-text text-[10px] font-bold block mb-1">WhereBot</span>
                   {s.bot}
                 </div>

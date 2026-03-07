@@ -36,9 +36,9 @@ const features = [
 
 export default function Features() {
   return (
-    <section id="features" className="px-4 sm:px-6 py-12 sm:py-20 bg-[#0c0c0c]">
+    <section id="features" className="px-4 sm:px-6 py-12 sm:py-20 bg-[#F5F5F5] dark:bg-[#0c0c0c]">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-white text-center mb-8 leading-tight">
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0c0c0c] dark:text-white text-center mb-8 leading-tight">
           How it <span className="gradient-text">works.</span>
         </h2>
 
@@ -46,7 +46,7 @@ export default function Features() {
           {features.map((feature) => (
             <div
               key={feature.title}
-              className="bg-[#1a1a1a] border border-white/10 rounded-3xl p-5 sm:p-8 flex flex-col items-center text-center gap-5 hover:border-white/20 transition-colors"
+              className="bg-white dark:bg-[#1a1a1a] border border-black/8 dark:border-white/10 rounded-3xl p-5 sm:p-8 flex flex-col items-center text-center gap-5 hover:border-black/20 dark:hover:border-white/20 transition-colors"
             >
               <div
                 className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0"
@@ -55,8 +55,8 @@ export default function Features() {
                 {feature.icon}
               </div>
               <div>
-                <h3 className="text-white font-bold text-lg mb-2">{feature.title}</h3>
-                <p className="text-[#888888] text-sm font-medium">{feature.body}</p>
+                <h3 className="text-[#0c0c0c] dark:text-white font-bold text-lg mb-2">{feature.title}</h3>
+                <p className="text-[#666666] dark:text-[#888888] text-sm font-medium">{feature.body}</p>
               </div>
             </div>
           ))}
