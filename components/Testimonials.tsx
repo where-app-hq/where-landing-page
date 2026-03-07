@@ -21,7 +21,7 @@ const testimonials = [
   },
   {
     title: 'marked it from my watch',
-    quote: "I told WhereBot 'mark this beach' from my watch and kept running. No stopping, no typing. That pin is still on my map. I go back and look at it when I need to smile.",
+    quote: "I told where bot 'mark this beach' from my watch and kept running. No stopping, no typing. That pin is still on my map. I go back and look at it when I need to smile.",
     display: 'anna',
     role: 'Student',
     location: 'UCSB',

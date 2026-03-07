@@ -1,7 +1,7 @@
 const scenarios = [
   {
     chip: 'Apple Watch · Golden Gate Bridge',
-    user: 'WhereBot, mark this as the best view I\'ve ever seen.',
+    user: 'hey wherebot, mark this as the best view I\'ve ever seen.',
     bot: 'Pinned. Golden Gate Bridge overlook added to your wayline.',
   },
   {
