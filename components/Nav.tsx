@@ -2,10 +2,13 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 import ThemeToggle from './ThemeToggle'
 
 export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const pathname = usePathname()
+  const prefix = pathname === '/' ? '' : '/'
 
   return (
     <nav className="sticky top-0 z-50 w-full bg-[#F5F5F5]/90 dark:bg-[#0c0c0c]/90 backdrop-blur border-b border-black/5 dark:border-white/5">
@@ -24,12 +27,12 @@ export default function Nav() {
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-6">
-          <a href="#features" className="text-[#555555] dark:text-[#B8B8B8] hover:text-[#0c0c0c] dark:hover:text-white text-sm font-semibold transition-colors">How It Works</a>
-          <a href="#wherebot" className="text-[#555555] dark:text-[#B8B8B8] hover:text-[#0c0c0c] dark:hover:text-white text-sm font-semibold transition-colors">WhereBot</a>
-          <a href="#reviews" className="text-[#555555] dark:text-[#B8B8B8] hover:text-[#0c0c0c] dark:hover:text-white text-sm font-semibold transition-colors">Reviews</a>
+          <a href={`${prefix}#features`} className="text-[#555555] dark:text-[#B8B8B8] hover:text-[#0c0c0c] dark:hover:text-white text-sm font-semibold transition-colors">How It Works</a>
+          <a href={`${prefix}#wherebot`} className="text-[#555555] dark:text-[#B8B8B8] hover:text-[#0c0c0c] dark:hover:text-white text-sm font-semibold transition-colors">WhereBot</a>
+          <a href={`${prefix}#reviews`} className="text-[#555555] dark:text-[#B8B8B8] hover:text-[#0c0c0c] dark:hover:text-white text-sm font-semibold transition-colors">Reviews</a>
           <ThemeToggle />
           <a
-            href="#signup"
+            href={`${prefix}#signup`}
             className="btn-gradient-border text-sm font-bold px-5 py-2 rounded-xl"
           >
             Get Beta Access
@@ -39,7 +42,7 @@ export default function Nav() {
         {/* Mobile: CTA + theme toggle + hamburger */}
         <div className="flex items-center gap-2 md:hidden">
           <a
-            href="#signup"
+            href={`${prefix}#signup`}
             className="btn-gradient-border text-[11px] font-bold px-2.5 py-1.5 rounded-lg"
           >
             Get Early Access
@@ -71,10 +74,10 @@ export default function Nav() {
       {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden border-t border-black/5 dark:border-white/5 px-4 py-4 flex flex-col gap-4 bg-[#F5F5F5] dark:bg-[#0c0c0c]">
-          <a href="#features" onClick={() => setMenuOpen(false)} className="text-[#555555] dark:text-[#B8B8B8] hover:text-[#0c0c0c] dark:hover:text-white text-sm font-semibold transition-colors">How It Works</a>
-          <a href="#wherebot" onClick={() => setMenuOpen(false)} className="text-[#555555] dark:text-[#B8B8B8] hover:text-[#0c0c0c] dark:hover:text-white text-sm font-semibold transition-colors">WhereBot</a>
-          <a href="#reviews" onClick={() => setMenuOpen(false)} className="text-[#555555] dark:text-[#B8B8B8] hover:text-[#0c0c0c] dark:hover:text-white text-sm font-semibold transition-colors">Reviews</a>
-          <a href="#signup" onClick={() => setMenuOpen(false)} className="text-[#555555] dark:text-[#B8B8B8] hover:text-[#0c0c0c] dark:hover:text-white text-sm font-semibold transition-colors">Get Beta Access</a>
+          <a href={`${prefix}#features`} onClick={() => setMenuOpen(false)} className="text-[#555555] dark:text-[#B8B8B8] hover:text-[#0c0c0c] dark:hover:text-white text-sm font-semibold transition-colors">How It Works</a>
+          <a href={`${prefix}#wherebot`} onClick={() => setMenuOpen(false)} className="text-[#555555] dark:text-[#B8B8B8] hover:text-[#0c0c0c] dark:hover:text-white text-sm font-semibold transition-colors">WhereBot</a>
+          <a href={`${prefix}#reviews`} onClick={() => setMenuOpen(false)} className="text-[#555555] dark:text-[#B8B8B8] hover:text-[#0c0c0c] dark:hover:text-white text-sm font-semibold transition-colors">Reviews</a>
+          <a href={`${prefix}#signup`} onClick={() => setMenuOpen(false)} className="text-[#555555] dark:text-[#B8B8B8] hover:text-[#0c0c0c] dark:hover:text-white text-sm font-semibold transition-colors">Get Beta Access</a>
           <div className="flex items-center gap-2 text-sm font-semibold text-[#555555] dark:text-[#B8B8B8]">
             <ThemeToggle />
             <span>Toggle light / dark mode</span>

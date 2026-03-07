@@ -1,4 +1,6 @@
 import LegalLayout from '@/components/LegalLayout'
+import MiniSignUp from '@/components/MiniSignUp'
+import Image from 'next/image'
 
 export const metadata = {
   title: 'About | Where App',
@@ -11,26 +13,26 @@ export default function AboutPage() {
       {/* Hero */}
       <div className="mb-12">
         <h1 className="text-4xl sm:text-5xl font-extrabold text-[#0c0c0c] dark:text-white leading-tight mb-4">
-          Built by people who <span className="gradient-text">wanted this app to exist.</span>
+          Built for people <span className="gradient-text">who go places.</span>
         </h1>
         <p className="text-[#555555] dark:text-[#aaaaaa] text-lg font-medium">
-          Where App is a free iOS app that turns every trip into a private, encrypted wayline. This is how we got here.
+          Where App is a free iPhone app that turns every trip into a private, encrypted wayline. This is how we got here.
         </p>
       </div>
 
-      {/* Team photo placeholder */}
-      <div className="w-full rounded-3xl overflow-hidden mb-12 aspect-video flex items-center justify-center bg-[#EBEBEB] dark:bg-[#1a1a1a] border border-black/8 dark:border-white/10">
-        <div className="text-center">
-          <div className="w-16 h-16 rounded-2xl mx-auto mb-3 flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #FCB250, #EC008C)' }}>
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-              <circle cx="9" cy="7" r="4" />
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-            </svg>
-          </div>
-          <p className="text-[#888888] text-sm font-semibold">Team photo coming soon</p>
+      {/* Team photo */}
+      <div className="mb-12">
+        <div className="w-full rounded-3xl overflow-hidden">
+          <Image
+            src="/about-image-v2.png"
+            alt="Pratik, Ron, and Dmitri"
+            width={800}
+            height={600}
+            className="w-full h-auto object-cover"
+            priority
+          />
         </div>
+        <p className="text-center text-[#888888] text-sm italic mt-3">Pratik, Ron and Dmitri: Where App co-founders</p>
       </div>
 
       <div className="space-y-10 text-[#555555] dark:text-[#aaaaaa] text-base leading-relaxed font-medium">
@@ -40,15 +42,18 @@ export default function AboutPage() {
           <p className="mb-4">
             Ron and Pratik met at Google Cloud in San Francisco. Both obsessed with technology, AI, and the itch to build something that actually mattered. The jobs were great. The itch was stronger.
           </p>
+          <p className="mb-4">
+            Like a lot of people, we loved Google Maps Timeline. It was genuinely magical to scroll back through your year and see everywhere you had been. Then Google discontinued it, and that little piece of your life just disappeared. Someone else&apos;s server, someone else&apos;s decision, your memories gone.
+          </p>
           <p>
-            The idea came from a simple frustration: your phone knows everywhere you have been, but that data lives on someone else&apos;s server, in a format you didn&apos;t choose. We wanted to build the app that gave it back to you. Your trips, your memories, encrypted on your phone. Entirely yours.
+            That moment crystallized everything. We wanted to build the app that gave it back to you, but done right this time. Your trips stored encrypted on your phone. No one else&apos;s server. No one else&apos;s decision. We care deeply about data privacy, not as a legal checkbox but as a core belief. Your location history is one of the most personal things that exists. It should belong to you.
           </p>
         </div>
 
         <div>
           <h2 className="text-2xl font-extrabold text-[#0c0c0c] dark:text-white mb-3">The team grew</h2>
           <p className="mb-4">
-            Ron had crossed paths with Dmitri years earlier, when Dmitri was leading innovation at Cisco. They stayed in touch for over a decade, connected by a shared love of technology, entrepreneurship, and building things from nothing.
+            Ron had crossed paths with Dmitri years earlier, when Dmitri was leading innovation at Cisco. They stayed in touch for over a decade, bonding over technology, entrepreneurship, and a shared restlessness to build things.
           </p>
           <p className="mb-4">
             In late 2024, Ron reached out to share the idea. Dmitri had been thinking about nearly the same thing. Walking through the streets of Lisbon, frustrated that he had no record of where he had been, he had sketched out the same vision: a private, AI-powered app that captured your journey exactly as you lived it. They joined forces immediately.
@@ -61,10 +66,14 @@ export default function AboutPage() {
         <div>
           <h2 className="text-2xl font-extrabold text-[#0c0c0c] dark:text-white mb-3">Where we are</h2>
           <p className="mb-4">
-            Over a year of designing, building, and iterating based on real user feedback. More than 1,000 beta users who shape every decision we make. A small team with one focus: the best trip memory app ever built.
+            Over a year of designing, building, and iterating on real user feedback. More than 2,000 beta users who shape every decision we make. A small team with one focus: the best trip memory app ever built.
           </p>
-          <p>
-            Everything we build comes back to one belief: your experiences belong to you.
+        </div>
+
+        {/* Belief statement */}
+        <div className="py-4">
+          <p className="text-3xl sm:text-4xl font-extrabold gradient-text leading-tight">
+            Your experiences belong to you.
           </p>
         </div>
 
@@ -80,19 +89,15 @@ export default function AboutPage() {
             </div>
           </div>
           <p className="text-[#555555] dark:text-[#aaaaaa] text-sm leading-relaxed">
-            Former Google Cloud. Building Where App because your memories deserve to live on your phone, not on someone else&apos;s server.
+            I started Where because I kept forgetting the best parts of my trips and that felt like a small tragedy. I&apos;m genuinely thrilled you found us and I want to hear what you think. My email is always open for suggestions and comments: <a href="mailto:ron@where.app" className="gradient-text font-bold">ron@where.app</a>
           </p>
         </div>
 
-        {/* CTA */}
-        <div className="text-center pt-4">
-          <a
-            href="/#signup"
-            className="btn-gradient-fill inline-block text-white font-bold text-base px-8 py-4 rounded-2xl"
-          >
-            Get Beta Access
-          </a>
-          <p className="text-[#888888] text-xs font-medium mt-3">Free. iPhone only. No account required.</p>
+        {/* Inline signup */}
+        <div className="rounded-3xl bg-[#EBEBEB] dark:bg-[#1a1a1a] border border-black/8 dark:border-white/10 p-6 sm:p-8">
+          <p className="text-[#0c0c0c] dark:text-white font-extrabold text-lg mb-1">Ready to start remembering?</p>
+          <p className="text-[#555555] dark:text-[#aaaaaa] text-sm font-medium mb-5">Join the beta and start saving your trips immediately.</p>
+          <MiniSignUp />
         </div>
 
       </div>

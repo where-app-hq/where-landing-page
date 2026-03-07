@@ -55,9 +55,12 @@ export default function WhereBot() {
     <section id="wherebot" className="px-4 sm:px-6 py-12 sm:py-20 bg-[#ECECEC] dark:bg-[#0a0a0a]">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0c0c0c] dark:text-white text-center mb-12 leading-tight">
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0c0c0c] dark:text-white text-center mb-4 leading-tight">
           Meet <span className="gradient-text">WhereBot.</span>
         </h2>
+        <p className="text-[#555555] dark:text-[#aaaaaa] text-base font-medium text-center max-w-xl mx-auto mb-12">
+          Your private and personal AI companion.
+        </p>
 
         {/* Chat bubbles — 2 cards side by side on lg+ */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
