@@ -1,17 +1,28 @@
 export const WAITLIST_TOTAL = 10000
 
-// Grows ~5 per day from a fixed base on March 6 2026.
-// Recalculates on every server request (see page.tsx force-dynamic).
-const BASE_DATE = new Date('2026-03-06').getTime()
-const BASE_COUNT = 6247
-const GROWTH_PER_DAY = 5
+const BASE_DATE = new Date('2026-03-07').getTime()
+const BASE_COUNT = 5241
+const DAYS = 90
+
+function noise(day: number): number {
+  const x = Math.sin(day * 127.1 + 311.7) * 43758.5453
+  return x - Math.floor(x) // stable 0–1 for any given day
+}
+
+function dailyIncrement(day: number): number {
+  const baseRate = 18 + 32 * (day / DAYS)  // 18/day → 50/day
+  const variance = noise(day) * 0.8 + 0.6  // 0.6× to 1.4× multiplier
+  return Math.round(baseRate * variance)
+}
 
 const daysSinceBase = Math.max(
   0,
   Math.floor((Date.now() - BASE_DATE) / (1000 * 60 * 60 * 24))
 )
 
-export const WAITLIST_CURRENT = Math.min(
-  BASE_COUNT + daysSinceBase * GROWTH_PER_DAY,
-  WAITLIST_TOTAL - 10
-)
+let count = BASE_COUNT
+for (let i = 0; i < daysSinceBase; i++) {
+  count += dailyIncrement(i)
+}
+
+export const WAITLIST_CURRENT = Math.min(count, WAITLIST_TOTAL - 100)
