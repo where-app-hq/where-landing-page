@@ -52,28 +52,12 @@ const devices = [
 
 export default function WhereBot() {
   return (
-    <section id="wherebot" className="px-4 sm:px-6 py-20 bg-[#0a0a0a]">
+    <section id="wherebot" className="px-4 sm:px-6 py-12 sm:py-20 bg-[#0a0a0a]">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-white text-center mb-3 leading-tight">
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-white text-center mb-12 leading-tight">
           Meet <span className="gradient-text">WhereBot.</span>
         </h2>
-        <p className="text-[#888888] text-center text-sm mb-6 font-medium">
-          Phone. Watch. WhatsApp.
-        </p>
-
-        {/* Device badges */}
-        <div className="flex items-center justify-center gap-3 mb-12">
-          {devices.map((d) => (
-            <span
-              key={d.label}
-              className="inline-flex items-center gap-1.5 text-[#aaaaaa] text-xs font-semibold bg-white/5 border border-white/10 rounded-full px-3 py-1.5"
-            >
-              {d.icon}
-              {d.label}
-            </span>
-          ))}
-        </div>
 
         {/* Try WhereBot — interactive chat stub (commented out, ship when WhereBot API is ready)
         <div className="mb-10 max-w-2xl mx-auto">
@@ -111,12 +95,12 @@ export default function WhereBot() {
         </div>
         */}
 
-        {/* Chat bubbles — 2 cards side by side on md+ */}
+        {/* Chat bubbles — 2 cards side by side on lg+ */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-          {scenarios.map((s, i) => (
+          {scenarios.slice(0, 2).map((s) => (
             <div
               key={s.chip}
-              className={`bg-[#111111] border border-white/10 rounded-3xl p-6 flex flex-col gap-4${i >= 2 ? ' hidden lg:flex' : ''}`}
+              className="bg-[#111111] border border-white/10 rounded-3xl p-6 flex flex-col gap-4"
             >
               {/* Context chip */}
               <span className="self-start text-[10px] font-semibold text-[#666666] bg-white/5 rounded-full px-3 py-1">

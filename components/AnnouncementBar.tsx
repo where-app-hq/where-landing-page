@@ -6,30 +6,29 @@ export default function AnnouncementBar() {
   return (
     <a
       href="#signup"
-      className="block w-full px-4 py-3 transition-opacity hover:opacity-90"
+      className="block w-full px-4 py-2.5 transition-opacity hover:opacity-80"
       style={{
-        background: 'linear-gradient(135deg, #FCB250 0%, #EC008C 100%)',
-        boxShadow: '0 8px 40px rgba(236, 0, 140, 0.8), 0 4px 16px rgba(0,0,0,0.9)',
+        background: 'linear-gradient(135deg, rgba(252,178,80,0.08) 0%, rgba(236,0,140,0.08) 100%), #0c0c0c',
+        borderBottom: '1px solid transparent',
+        backgroundClip: 'padding-box',
+        boxShadow: '0 1px 0 0 rgba(252,178,80,0.25)',
       }}
     >
-      <div className="max-w-md mx-auto flex flex-col gap-1.5" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.5)' }}>
-        {/* Count + label */}
-        <div className="flex items-center justify-between">
-          <span className="text-white text-xs font-bold">
-            🚀{' '}
-            <span className="text-white font-extrabold">{WAITLIST_CURRENT.toLocaleString()}</span>
-            <span className="text-white/70 font-semibold"> / {WAITLIST_TOTAL.toLocaleString()} beta slots filled</span>
-          </span>
-          <span className="text-white/70 text-xs font-semibold hidden sm:inline">
-            TestFlight for iOS<sup>&reg;</sup>
+      <div className="max-w-md mx-auto flex flex-col gap-1.5">
+        {/* One line on mobile, with progress bar below on sm+ */}
+        <div className="flex items-center justify-center gap-1.5 text-xs font-semibold">
+          <span className="text-[#bbbbbb]">iOS<sup>®</sup> beta is open.</span>
+          <span>
+            <span className="gradient-text font-extrabold">{WAITLIST_CURRENT.toLocaleString()}</span>
+            <span className="text-[#bbbbbb]"> of {WAITLIST_TOTAL.toLocaleString()} slots filled.</span>
           </span>
         </div>
 
-        {/* Progress bar */}
-        <div className="w-full h-1.5 bg-white/20 rounded-full overflow-hidden">
+        {/* Progress bar — hidden on mobile to save space */}
+        <div className="hidden sm:block w-full h-1 bg-white/10 rounded-full overflow-hidden">
           <div
-            className="h-full rounded-full bg-white"
-            style={{ width: `${PCT}%` }}
+            className="h-full rounded-full"
+            style={{ width: `${PCT}%`, background: 'linear-gradient(90deg, #FCB250, #EC008C)' }}
           />
         </div>
       </div>

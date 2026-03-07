@@ -1,15 +1,6 @@
 'use client'
 
-import { useRef, useCallback, useState, useEffect } from 'react'
-
-function shuffle<T>(arr: T[]): T[] {
-  const a = [...arr]
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    ;[a[i], a[j]] = [a[j], a[i]]
-  }
-  return a
-}
+import { useState, useEffect, useRef, useCallback } from 'react'
 
 const testimonials = [
   {
@@ -29,6 +20,22 @@ const testimonials = [
     avatar: 'P',
   },
   {
+    title: 'marked it from my watch',
+    quote: "I told WhereBot 'mark this beach' from my watch and kept running. No stopping, no typing. That pin is still on my map. I go back and look at it when I need to smile.",
+    display: 'anna',
+    role: 'Student',
+    location: 'UCSB',
+    avatar: 'A',
+  },
+  {
+    title: 'did the camino last year',
+    quote: "every step is saved. i still open it sometimes. takes me right back. simple app, does what it says",
+    display: 'nancyT',
+    role: 'Retired Pediatric Nurse',
+    location: 'Scottsdale, AZ',
+    avatar: 'N',
+  },
+  {
     title: 'finally have proof',
     quote: "drove my whole life and never had a real map of where i went. now i do. simple as that",
     display: 'RANDY',
@@ -40,49 +47,17 @@ const testimonials = [
     title: 'every photographer needs this',
     quote: "i shoot hundreds of photos a trip and could never remember exactly where i was standing. WHERE APP FIXED THIS. honestly can't believe nothing else does it",
     display: 'sakura.n',
-    role: 'Travel Photographer',
+    role: 'Photographer',
     location: 'Portland, OR',
     avatar: 'SN',
   },
   {
-    title: 'marked it from my watch',
-    quote: "I told WhereBot 'mark this beach' from my watch and kept running. No stopping, no typing. That pin is still on my map. I go back and look at it when I need to smile.",
-    display: 'anna',
-    role: 'Student',
-    location: 'UCSB',
-    avatar: 'A',
-  },
-  {
-    title: 'didn\'t realize how much i move',
+    title: "didn't realize how much i move",
     quote: "i'm all over miami for work every week... pulled up my map and was like ok wow. i cover A LOT of ground",
     display: 'CarlosS',
     role: 'Private Chef',
     location: 'Miami, FL',
     avatar: 'CS',
-  },
-  {
-    title: 'did the camino last year',
-    quote: "every step is saved. i still open it sometimes. takes me right back. simple app, does what it says",
-    display: 'nancyT',
-    role: 'Retired Pediatric Nurse',
-    location: 'Scottsdale, AZ',
-    avatar: 'N',
-  },
-  {
-    title: 'FINALLY',
-    quote: "run the same route every morning. for years. always wanted a log of it without having to do anything. this is that app",
-    display: 'rockybamboa',
-    role: 'Personal Trainer',
-    location: 'Philadelphia, PA',
-    avatar: 'RB',
-  },
-  {
-    title: 'my mom wanted it too',
-    quote: "drove home for thanksgiving, it tracked every stop automatically. showed her the map and she was like how do i get this. hadn't expected that lol",
-    display: 'justin98',
-    role: 'College Senior',
-    location: 'Columbus, OH',
-    avatar: 'J',
   },
   {
     title: 'quiet and useful',
@@ -96,8 +71,7 @@ const testimonials = [
 
 function Card({ title, quote, display, role, location, avatar }: typeof testimonials[0]) {
   return (
-    <div className="flex-shrink-0 w-72 mx-2 bg-[#0c0c0c] border border-white/10 rounded-3xl p-5 flex flex-col gap-3">
-      {/* Reviewer row */}
+    <div className="bg-[#0c0c0c] border border-white/10 rounded-3xl px-6 py-8 flex flex-col gap-4 h-full">
       <div className="flex items-center gap-3">
         <div
           className="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0"
@@ -110,20 +84,13 @@ function Card({ title, quote, display, role, location, avatar }: typeof testimon
           <p className="text-[#666666] text-xs font-medium">{role} · {location}</p>
         </div>
       </div>
-
-      {/* Stars */}
       <div className="flex gap-0.5">
         {Array.from({ length: 5 }).map((_, i) => (
           <svg key={i} width="13" height="13" viewBox="0 0 16 16">
-            <path
-              d="M8 1l1.85 3.75 4.15.6-3 2.93.71 4.12L8 10.25l-3.71 1.95.71-4.12-3-2.93 4.15-.6z"
-              fill="#FCB250"
-            />
+            <path d="M8 1l1.85 3.75 4.15.6-3 2.93.71 4.12L8 10.25l-3.71 1.95.71-4.12-3-2.93 4.15-.6z" fill="#FCB250" />
           </svg>
         ))}
       </div>
-
-      {/* Title + body */}
       <div>
         <p className="text-white font-bold text-sm mb-1">{title}</p>
         <p className="text-[#888888] text-xs leading-relaxed font-medium">{quote}</p>
@@ -132,95 +99,92 @@ function Card({ title, quote, display, role, location, avatar }: typeof testimon
   )
 }
 
-function useDragScroll() {
-  const trackRef = useRef<HTMLDivElement>(null)
-  const dragging = useRef(false)
-  const startX = useRef(0)
-  const startTranslate = useRef(0)
+function Carousel({ perView }: { perView: number }) {
+  const slides = Math.ceil(testimonials.length / perView)
+  const [active, setActive] = useState(0)
+  const touchStartX = useRef(0)
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
-  const getX = (el: HTMLElement) =>
-    new DOMMatrix(window.getComputedStyle(el).transform).m41
+  const goTo = useCallback((index: number) => {
+    setActive((index + slides) % slides)
+  }, [slides])
 
-  const onDragStart = useCallback((clientX: number) => {
-    const track = trackRef.current
-    if (!track) return
-    const x = getX(track)
-    track.style.animation = 'none'
-    track.style.transform = `translateX(${x}px) translateZ(0)`
-    startX.current = clientX
-    startTranslate.current = x
-    dragging.current = true
-  }, [])
+  const resetTimer = useCallback(() => {
+    if (timerRef.current) clearInterval(timerRef.current)
+    timerRef.current = setInterval(() => {
+      setActive((prev) => (prev + 1) % slides)
+    }, 4000)
+  }, [slides])
 
-  const onDragMove = useCallback((clientX: number) => {
-    if (!dragging.current) return
-    const track = trackRef.current
-    if (!track) return
-    const delta = clientX - startX.current
-    track.style.transform = `translateX(${startTranslate.current + delta}px) translateZ(0)`
-  }, [])
+  useEffect(() => {
+    resetTimer()
+    return () => { if (timerRef.current) clearInterval(timerRef.current) }
+  }, [resetTimer])
 
-  const onDragEnd = useCallback(() => {
-    if (!dragging.current) return
-    dragging.current = false
-    const track = trackRef.current
-    if (!track) return
-
-    let x = getX(track)
-    const halfWidth = track.scrollWidth / 2
-
-    // Normalise x into [-halfWidth, 0]
-    x = x % halfWidth
-    if (x > 0) x -= halfWidth
-
-    const duration = window.innerWidth >= 1024 ? 60 : window.innerWidth >= 768 ? 50 : 40
-    const delay = -(Math.abs(x) / halfWidth) * duration
-
-    track.style.transform = ''
-    track.style.animation = ''
-    track.getBoundingClientRect() // force reflow
-    track.style.animationDelay = `${delay}s`
-  }, [])
-
-  return {
-    trackRef,
-    onMouseDown: (e: React.MouseEvent) => onDragStart(e.clientX),
-    onMouseMove: (e: React.MouseEvent) => onDragMove(e.clientX),
-    onMouseUp: () => onDragEnd(),
-    onMouseLeave: () => onDragEnd(),
-    onTouchStart: (e: React.TouchEvent) => onDragStart(e.touches[0].clientX),
-    onTouchMove: (e: React.TouchEvent) => onDragMove(e.touches[0].clientX),
-    onTouchEnd: () => onDragEnd(),
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX
   }
+
+  const onTouchEnd = (e: React.TouchEvent) => {
+    const delta = e.changedTouches[0].clientX - touchStartX.current
+    if (Math.abs(delta) < 40) return
+    goTo(delta < 0 ? active + 1 : active - 1)
+    resetTimer()
+  }
+
+  return (
+    <div>
+      <div className="overflow-hidden" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+        <div
+          className="flex transition-transform duration-500 ease-in-out"
+          style={{ transform: `translateX(-${active * 100}%)` }}
+        >
+          {Array.from({ length: slides }).map((_, slideIdx) => (
+            <div key={slideIdx} className="w-full flex-shrink-0 grid gap-4" style={{ gridTemplateColumns: `repeat(${perView}, minmax(0, 1fr))` }}>
+              {testimonials.slice(slideIdx * perView, slideIdx * perView + perView).map((t) => (
+                <Card key={t.display} {...t} />
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Dots */}
+      <div className="flex justify-center gap-2 mt-6">
+        {Array.from({ length: slides }).map((_, i) => (
+          <button
+            key={i}
+            onClick={() => { goTo(i); resetTimer() }}
+            className="w-2 h-2 rounded-full transition-all duration-300"
+            style={{
+              background: i === active ? 'linear-gradient(135deg, #FCB250, #EC008C)' : 'rgba(255,255,255,0.2)',
+              transform: i === active ? 'scale(1.3)' : 'scale(1)',
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  )
 }
 
 export default function Testimonials() {
-  const drag = useDragScroll()
-  const [shuffled, setShuffled] = useState(testimonials)
-  useEffect(() => { setShuffled(shuffle(testimonials)) }, [])
-
   return (
-    <section id="reviews" className="py-20 bg-[#161616] overflow-hidden">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-14">
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-white text-center mb-3 leading-tight">
+    <section id="reviews" className="py-12 sm:py-20 bg-[#161616]">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-white text-center mb-12 leading-tight">
           Our users <span className="gradient-text">love us.</span>
         </h2>
-      </div>
 
-      <div
-        className="relative cursor-grab active:cursor-grabbing select-none"
-        onMouseDown={drag.onMouseDown}
-        onMouseMove={drag.onMouseMove}
-        onMouseUp={drag.onMouseUp}
-        onMouseLeave={drag.onMouseLeave}
-        onTouchStart={drag.onTouchStart}
-        onTouchMove={drag.onTouchMove}
-        onTouchEnd={drag.onTouchEnd}
-      >
-        <div className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style={{ background: 'linear-gradient(to right, #161616, transparent)' }} />
-        <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none" style={{ background: 'linear-gradient(to left, #161616, transparent)' }} />
-        <div ref={drag.trackRef} className="flex w-max animate-scroll-left">
-          {[...shuffled, ...shuffled].map((t, i) => <Card key={`${t.display}-${i}`} {...t} />)}
+        {/* Phone + iPad: 1 per slide, 8 dots, constrained width so cards are tall not wide */}
+        <div className="lg:hidden">
+          <div className="max-w-sm mx-auto">
+            <Carousel perView={1} />
+          </div>
+        </div>
+
+        {/* Desktop: 4 per slide, 2 dots */}
+        <div className="hidden lg:block">
+          <Carousel perView={4} />
         </div>
       </div>
     </section>

@@ -36,18 +36,17 @@ const features = [
 
 export default function Features() {
   return (
-    <section id="features" className="px-4 sm:px-6 py-20 bg-[#0c0c0c]">
+    <section id="features" className="px-4 sm:px-6 py-12 sm:py-20 bg-[#0c0c0c]">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl sm:text-4xl font-extrabold text-white text-center mb-8 leading-tight">
-          Capture it.{' '}
-          <span className="gradient-text">Keep it. Share only what you want.</span>
+          How it <span className="gradient-text">works.</span>
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:[&>*:last-child]:col-span-2 sm:[&>*:last-child]:max-w-sm sm:[&>*:last-child]:mx-auto lg:[&>*:last-child]:col-span-1 lg:[&>*:last-child]:max-w-none lg:[&>*:last-child]:mx-0">
           {features.map((feature) => (
             <div
               key={feature.title}
-              className="bg-[#1a1a1a] border border-white/10 rounded-3xl p-8 flex flex-col items-center text-center gap-5 hover:border-white/20 transition-colors"
+              className="bg-[#1a1a1a] border border-white/10 rounded-3xl p-5 sm:p-8 flex flex-col items-center text-center gap-5 hover:border-white/20 transition-colors"
             >
               <div
                 className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0"
