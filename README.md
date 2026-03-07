@@ -138,48 +138,12 @@ Every section should feel this clear. No section should require the user to figu
 
 ---
 
-## Vercel Migration Plan
-
-Site hit Netlify's free tier limits. Migrating to Vercel (better free tier, built for Next.js).
-
-### Steps
-
-**1. Deploy to Vercel (5 min)**
-- Go to vercel.com, sign in with GitHub
-- Click "Add New Project" → import `where-app-hq/where-landing-page`
-- Set root directory to `landing-page`
-- Add env var: `LOOPS_API_KEY` (copy from Netlify dashboard → Site settings → Env vars)
-- Click Deploy — Vercel auto-detects Next.js, no config needed
-
-**2. Add custom domain in Vercel (2 min)**
-- Vercel dashboard → project → Settings → Domains
-- Add `where.app` and `www.where.app`
-- Vercel will show you the DNS values to set
-
-**3. Update DNS at Porkbun (5 min)**
-- Log into porkbun.com → DNS for `where.app`
-- Delete the existing A record pointing to Netlify (`75.2.60.5`)
-- Add new A record: `@` → Vercel's IP (shown in Vercel dashboard, usually `76.76.21.21`)
-- Add CNAME: `www` → `cname.vercel-dns.com`
-- SSL provisions automatically once DNS propagates (5-30 min)
-
-**4. Verify and clean up (5 min)**
-- Confirm `where.app` loads from Vercel
-- Delete the site from Netlify dashboard to avoid confusion
-- Update this README deployment section
-
-### Notes
-- Vercel free tier: 100GB bandwidth/mo, unlimited builds — plenty for a landing page
-- Auto-deploys on push to `main` work the same as Netlify
-- The `netlify.toml` file can stay — Vercel ignores it
-
----
 
 ## Current State (as built)
 
 ### Stack
 - Next.js 14 (App Router), Tailwind CSS, `next-themes` for dark/light mode
-- Deployed on Netlify (migrating to Vercel — see above)
+- Deployed on Vercel, auto-deploys on push to `main`
 - Live at: `where.app`
 - Dev: `npm run dev` from `landing-page/`
 - Email capture: Loops via `/api/subscribe`
