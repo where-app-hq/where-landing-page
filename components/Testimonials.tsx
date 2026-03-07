@@ -99,9 +99,23 @@ function Card({ title, quote, display, role, location, avatar }: typeof testimon
   )
 }
 
+function shuffle<T>(arr: T[]): T[] {
+  const a = [...arr]
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]]
+  }
+  return a
+}
+
 function Carousel({ perView }: { perView: number }) {
-  const slides = Math.ceil(testimonials.length / perView)
+  const [items, setItems] = useState(testimonials)
+  const slides = Math.ceil(items.length / perView)
   const [active, setActive] = useState(0)
+
+  useEffect(() => {
+    setItems(shuffle(testimonials))
+  }, [])
   const touchStartX = useRef(0)
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
@@ -141,7 +155,7 @@ function Carousel({ perView }: { perView: number }) {
         >
           {Array.from({ length: slides }).map((_, slideIdx) => (
             <div key={slideIdx} className="w-full flex-shrink-0 grid gap-4" style={{ gridTemplateColumns: `repeat(${perView}, minmax(0, 1fr))` }}>
-              {testimonials.slice(slideIdx * perView, slideIdx * perView + perView).map((t) => (
+              {items.slice(slideIdx * perView, slideIdx * perView + perView).map((t) => (
                 <Card key={t.display} {...t} />
               ))}
             </div>
