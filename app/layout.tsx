@@ -18,6 +18,19 @@ const jsonLd = {
   url: 'https://where.app',
 }
 
+const orgJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Where App',
+  url: 'https://where.app',
+  logo: 'https://where.app/favicon.png',
+  sameAs: [
+    'https://www.instagram.com/where.app.hq/',
+    'https://www.tiktok.com/@where.app.hq',
+    'https://x.com/where_app_hq',
+  ],
+}
+
 const nunito = Nunito({
   subsets: ['latin'],
   variable: '--font-nunito',
@@ -64,6 +77,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
         />
       </head>
       <body>

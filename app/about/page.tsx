@@ -59,7 +59,7 @@ export default function AboutPage() {
             In late 2024, Ron reached out to share the idea. Dmitri had been thinking about nearly the same thing. Walking through the streets of Lisbon, frustrated that he had no record of where he had been, he had sketched out the same vision: a private, AI-powered app that captured your journey exactly as you lived it. They joined forces immediately.
           </p>
           <p>
-            Dmitri leads our engineering, backed by an exceptional team including Yarik from Ukraine, who has been building the core product since day one.
+            Dmitri leads our engineering, backed by an exceptional team that has been building the core product since day one.
           </p>
         </div>
 
