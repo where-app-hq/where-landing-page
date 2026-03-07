@@ -117,118 +117,84 @@ Every section should feel this clear. No section should require the user to figu
 
 ## TODO
 
-- [ ] **Loops welcome email** — Create a Loop in app.loops.so: trigger = Contact Created, filter source = landing-page, send welcome email immediately. See setup notes in Loops dashboard.
-- [ ] **OG image** — Create `public/og-image.png` (1200x630px) for social share previews. Dark background `#0c0c0c`, Where App wordmark centered, headline "Remember Every Place You've Ever Been." in white bold, brand gradient accent (`#FCB250` to `#EC008C`). Drop file in `landing-page/public/` and it goes live automatically.
+- [ ] **Loops welcome email** — Create a Loop in app.loops.so: trigger = Contact Created, filter source = landing-page, send welcome email immediately.
+- [ ] **OG image** — Create `public/og-image.png` (1200x630px) for social share previews. Brand gradient on dark bg, Where App wordmark, headline "Remember Every Place You've Ever Been."
 - [ ] **Social links** — Replace `href="#"` on TikTok and Instagram icons in `Footer.tsx` with real profile URLs.
-- [ ] **Footer pages** — `/privacy`, `/terms`, `/about` are linked but likely 404. Create these pages or remove the links.
-- [ ] **Sitemap** — Add `app/sitemap.ts` for Google crawl. Single-page site so minimal effort.
-- [ ] **Favicon** — Add `app/favicon.ico` (or `icon.png`) and define it in `layout.tsx` metadata. Currently shows browser default.
+- [ ] **Sitemap** — Add `app/sitemap.ts` for Google crawl.
+- [ ] **Favicon** — Add `app/favicon.ico` and define it in `layout.tsx` metadata.
+- [ ] **About team photo** — Replace cartoon illustration with real team photo when available.
+- [ ] **Ron founder photo** — Add headshot to the Ron founder card in `/about`.
 
 ---
 
 ## Current State (as built)
 
 ### Stack
-- Next.js 14 (App Router), Tailwind CSS, Vercel
+- Next.js 14 (App Router), Tailwind CSS, `next-themes` for dark/light mode
+- Deployed on Netlify, auto-deploys on push to `main`
+- Live at: `where.app`
 - Dev: `npm run dev` from `landing-page/`
 - Email capture: Loops via `/api/subscribe`
 
-### Page Order
-1. `AnnouncementBar` — gradient bar, beta slot count + progress bar
-2. `Nav` — sticky, hamburger on mobile, links to page sections
-3. `Hero` — H1, subhead, CTA, 3-phone stack mockup
+### Page Order (homepage)
+1. `AnnouncementBar` — beta slot count + progress bar, links to `#signup`
+2. `Nav` — sticky, theme toggle, hamburger on mobile
+3. `Hero` — H1, subhead, CTA, 3-phone stacked mockup
 4. `TrustBar` — 3 stats
 5. `Features` — 3-card grid
-6. `WhereBot` — chat bubble section
-7. `Testimonials` — infinite scroll carousel
-8. `SignUp` — email capture form, progress bar
+6. `WhereBot` — 2 chat bubble scenarios
+7. `Testimonials` — swipeable carousel, randomized on load
+8. `SignUp` — email form, progress bar
 9. `Footer` — links, copyright
+
+### Subpages
+| Route | Component | Notes |
+|---|---|---|
+| `/about` | `app/about/page.tsx` | Founder story, team photo, inline `MiniSignUp` |
+| `/privacy` | `app/privacy/page.tsx` | Privacy Policy, AZ, team@where.app |
+| `/terms` | `app/terms/page.tsx` | Terms of Service, AZ governing law |
+
+All subpages use `LegalLayout` (Nav + Footer + `max-w-3xl` prose container).
 
 ### Key Files
 | File | Purpose |
 |---|---|
-| `lib/waitlist.ts` | Waitlist count + total. Count auto-grows ~5/day from Mar 6 2026 base. |
-| `components/AnnouncementBar.tsx` | Top gradient banner with slot count |
-| `components/Hero.tsx` | H1, subhead, 3-phone stacked mockup |
-| `components/TrustBar.tsx` | 3 trust stats below hero |
-| `components/Features.tsx` | 3-card feature grid |
-| `components/WhereBot.tsx` | 4 chat bubble scenarios (2 on mobile) |
-| `components/Testimonials.tsx` | Infinite scroll carousel, 10 reviewers |
-| `components/SignUp.tsx` | Email form, progress bar, TestFlight CTA |
-| `components/Nav.tsx` | Sticky nav with section anchor links |
-| `components/Footer.tsx` | Footer with legal copy |
-| `app/page.tsx` | Composes all sections. `force-dynamic` for live waitlist count. |
-| `app/globals.css` | Tailwind + custom tokens + scroll animation keyframes |
+| `lib/waitlist.ts` | Organic accelerating waitlist growth — deterministic noise, no DB |
+| `components/Nav.tsx` | Sticky nav, `usePathname` for subpage anchor prefixing, theme toggle |
+| `components/ThemeProvider.tsx` | next-themes wrapper, `defaultTheme="light"` |
+| `components/ThemeToggle.tsx` | Sun/moon toggle with mounted guard |
+| `components/LegalLayout.tsx` | Shared wrapper for subpages |
+| `components/MiniSignUp.tsx` | Compact email form, same Loops endpoint as main SignUp |
+| `components/AnnouncementBar.tsx` | Top bar, `.announcement-bg` CSS class for theme-aware bg |
+| `components/SignUp.tsx` | Full email form with progress bar, `displayCount` increments on success |
+| `app/globals.css` | Tailwind + `.dark` overrides for complex multi-layer backgrounds |
 
 ### Design Tokens
-| Token | Value |
-|---|---|
-| Background | `#0c0c0c` / `#0a0a0a` |
-| Accent pink | `#EC008C` |
-| Accent amber | `#FCB250` |
-| Brand gradient | `135deg, #FCB250 → #EC008C` |
-| Text primary | `#ffffff` |
-| Text muted | `#888888` / `#aaaaaa` |
-| Fonts | DM Sans, Inter |
+| Token | Light | Dark |
+|---|---|---|
+| Background | `#F5F5F5` | `#0c0c0c` |
+| Card | `#ffffff` | `#1a1a1a` |
+| Text primary | `#0c0c0c` | `#E2E2E2` |
+| Text muted | `#555555` | `#aaaaaa` |
+| Accent pink | `#EC008C` | `#EC008C` |
+| Accent amber | `#FCB250` | `#FCB250` |
+| Brand gradient | `135deg, #FCB250 → #EC008C` | same |
+| Font | Nunito (Google Fonts) | same |
 
 ### Waitlist Variables (`lib/waitlist.ts`)
-- `WAITLIST_TOTAL` = 10,000 (TestFlight external tester limit)
-- `WAITLIST_CURRENT` = auto-calculated: base 9,232 on Mar 6 2026, +5/day, capped at 9,990
+- `WAITLIST_TOTAL` = 10,000
+- `WAITLIST_CURRENT` = deterministic accelerating growth from 5,241 (Mar 7 2026) to ~9,600 (Jun 5 2026)
+- Daily increment = `(18 + 32 * day/90) * noise(day)` — accelerates + organic variance
 - `force-dynamic` on `page.tsx` ensures server recalculates on every request
-- `SignUp` receives `current` as a prop (client component — can't import live value directly)
-
-### Announcement Bar
-- Full brand gradient background with dark drop shadow
-- Shows: `🚀 {count} / 10,000 beta slots filled` + progress bar
-- "TestFlight for iOS®" on the right (hidden on mobile)
-- Entire bar links to `#signup`
-
-### Hero
-- Eyebrow: "The #1 Private Experiences App"
-- H1: "Remember Every Place You've Ever Been."
-- Subhead: "Just go. Where App remembers everything."
-- CTA: "Save Your First Trip. It's Free."
-- 3-phone stacked mockup: Phone 1 (foreground, `src` in Hero.tsx line ~57), Phone 2 (middle), Phone 3 (back). Swap `src` per phone to update screens independently.
-- Phone images live in `public/` — current: `app-screenshot.png`
-
-### Features
-- Section: "Your experiences. Remembered the right way."
-- 3 cards: Capture Every Experience / Stored on Your Phone / Share Only What You Want
-- Word "travel" removed everywhere — replaced with "experiences"
-
-### WhereBot
-- Section id: `#wherebot`
-- 4 scenarios: GG Bridge watch, SFO voice note, Mission route, Feb ramen search
-- Mobile shows only 2 (cards 3+4 are `hidden md:flex`)
-- Device badges: Phone, Apple Watch, WhatsApp
-- **TODO (future):** An interactive "Try WhereBot" chat input is stubbed out in `WhereBot.tsx` but commented out. It's a pink-to-orange gradient input with dot pattern overlay where users can type a question. Uncomment and wire to the WhereBot API when the backend is ready.
-
-### Testimonials
-- 10 reviewers, App Store-style cards: bold title + stars + body + name
-- Infinite scroll (CSS animation, GPU-accelerated, pauses on hover)
-- Names use varied formats: `cameron_s`, `Paras`, `RANDY`, `sakura.n`, `anna`, `CarlosS`, `nancyT`, `rockybamboa`, `justin98`, `lukas h p`
-- Stars: `#FCB250` (brand amber), centered
-
-### SignUp
-- Headline: "Start remembering today."
-- CTA button: Apple logo + "Request Beta Access on iPhone®"
-- Micro-copy: "iOS only via TestFlight™ · Encrypted · Free"
-- Progress bar uses `WAITLIST_CURRENT` prop passed from `page.tsx`
+- `SignUp` receives `current` as prop; increments client-side by 1 on successful submit
 
 ### Nav Links
 | Label | Anchor |
 |---|---|
-| How It Works | `#features` |
+| How It Works | `#features` (prefixed `/#features` on subpages) |
 | WhereBot | `#wherebot` |
 | Reviews | `#reviews` |
 | Get Beta Access | `#signup` |
-
-### Copy Rules
-- No em dashes anywhere
-- No "travel" — use "experiences"
-- No hardcoded waitlist numbers — always use `WAITLIST_CURRENT`
-- "wayline" defined on first use in WhereBot subhead
-- Legal: © 2026 Where, LLC. All Rights Reserved.
 
 ---
 
@@ -328,10 +294,11 @@ To set up the welcome email in Loops: app.loops.so → **Loops** → **Create Lo
 
 ## Deployment
 
-**Platform:** Netlify (free tier)
+**Platform:** Netlify (free tier — watch build minutes)
 **Repo:** https://github.com/where-app-hq/where-landing-page (public)
-**Live preview URL:** https://dreamy-malasada-dd14ae.netlify.app/
-**Custom domain:** `where.app` (not yet pointed — DNS cutover pending)
+**Live URL:** https://where.app
+**Netlify preview:** https://dreamy-malasada-dd14ae.netlify.app/
+**DNS:** Porkbun, A record `@` → `75.2.60.5` (Netlify load balancer)
 
 ### How deploys work
 Every push to `main` triggers an automatic Netlify redeploy. No manual steps needed.
