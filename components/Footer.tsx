@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
         <a href="/">
           <Image
-            src="/where-logo.png"
+            src="/where-logo-new.png"
             alt="Where App"
             width={100}
             height={34}

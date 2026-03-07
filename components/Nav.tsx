@@ -13,7 +13,7 @@ export default function Nav() {
         {/* Logo */}
         <a href="/">
           <Image
-            src="/where-logo.png"
+            src="/where-logo-new.png"
             alt="Where App"
             width={120}
             height={40}
@@ -40,7 +40,7 @@ export default function Nav() {
         <div className="flex items-center gap-2 md:hidden">
           <a
             href="#signup"
-            className="btn-gradient-border text-xs font-bold px-3 py-2 rounded-lg"
+            className="btn-gradient-border text-[11px] font-bold px-2.5 py-1.5 rounded-lg"
           >
             Get Early Access
           </a>
