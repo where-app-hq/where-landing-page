@@ -1,0 +1,36 @@
+Development Brief: Where App Zero-Friction Memories
+
+Core Vision
+Where App is a private travel record that captures your route automatically and lets you "talk" to your trip using your phone, watch, or WhatsApp. 
+
+Technical Requirements
+
+    Passive Tracking: The app must trace routes and mark stops in the background with zero manual effort. 
+
+    Multi-Device Bot: Users should be able to speak or text the Where Bot from the app, a smartwatch, or WhatsApp.
+
+    Voice Commands: The system must process natural voice notes like "add a note that this is a cool airport."
+
+    Smart Waypoints: The bot should update the map live when a user says "add a new waypoint at Costco Goleta."
+
+    Intent-Based Routing: The bot must be able to "plot a route from Costco to Coal Oil Point" upon request.
+
+    Encrypted Privacy: All conversations and locations must stay locked on the user's phone. 
+
+The Frictionless Value Prop
+
+    No Logging: You stay in the moment while the app builds your "wayline" for you. 
+
+    Easy Interaction: You can update your trip with a quick text on your watch or a voice note in the app.
+
+    Searchable History: You can ask the bot questions to find specific spots you visited months ago.
+
+    Private Sharing: You can share your maps and notes with friends without the stress of public social media. 
+
+Example Interaction Scenarios
+
+    Scenario 1: You are driving and see a beautiful view. You tap your watch and say: "Where Bot, mark this spot as the best sunset ever."
+
+    Scenario 2: You are at a busy airport. You open the app and say: "This Santa Barbara airport is actually pretty cool," and it pins that note to your map.
+
+    Scenario 3: You are planning your afternoon. You type to the bot: "Give me a waypoint from Costco to Coal Oil Point," and the route appears instantly.

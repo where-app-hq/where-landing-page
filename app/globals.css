@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --accent: #EC008C;
+  --secondary: #FCB250;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0c0c0c;
+  color: #E2E2E2;
+}
+
+@media (min-width: 768px) {
+  .animate-scroll-left { animation-duration: 50s; }
+}
+
+@keyframes jiggle {
+  0%, 100% { transform: rotate(0deg) translateY(0px); }
+  20%       { transform: rotate(-1.5deg) translateY(-3px); }
+  40%       { transform: rotate(1.5deg) translateY(-5px); }
+  60%       { transform: rotate(-1deg) translateY(-3px); }
+  80%       { transform: rotate(1deg) translateY(-1px); }
+}
+
+@media (min-width: 1024px) {
+  .animate-scroll-left { animation-duration: 60s; }
+}
+
+@keyframes scroll-left {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes scroll-right {
+  from { transform: translate3d(-50%, 0, 0); }
+  to { transform: translate3d(0, 0, 0); }
+}
+
+@layer utilities {
+  .animate-scroll-left {
+    animation: scroll-left 40s linear infinite;
+    will-change: transform;
+    transform: translateZ(0);
+  }
+  .animate-scroll-right {
+    animation: scroll-right 38s linear infinite;
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+  .animate-scroll-left:hover,
+  .animate-scroll-right:hover {
+    animation-play-state: paused;
+  }
+  /* Orange → Pink gradient text (primary brand gradient) */
+  .gradient-text {
+    background: linear-gradient(135deg, #FCB250 0%, #EC008C 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glow behind elements */
+  .accent-glow {
+    box-shadow: 0 0 40px rgba(236, 0, 140, 0.3);
+  }
+
+  /* Gradient border button — dark bg + brand gradient outline */
+  .btn-gradient-border {
+    background:
+      linear-gradient(#161616, #161616) padding-box,
+      linear-gradient(135deg, #EC008C, #FCB250) border-box;
+    border: 1.5px solid transparent;
+    color: #ffffff;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .btn-gradient-border:hover {
+    box-shadow: 0 0 20px rgba(236, 0, 140, 0.4), 0 0 40px rgba(252, 178, 80, 0.15);
+  }
+
+  /* Solid gradient fill button */
+  .btn-gradient-fill {
+    background: linear-gradient(135deg, #FCB250 0%, #EC008C 100%);
+    color: #ffffff;
+    transition: opacity 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .btn-gradient-fill:hover {
+    opacity: 0.9;
+    box-shadow: 0 0 24px rgba(236, 0, 140, 0.4);
+  }
+}
