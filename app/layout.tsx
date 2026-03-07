@@ -25,6 +25,10 @@ const nunito = Nunito({
 })
 
 export const metadata: Metadata = {
+  icons: {
+    icon: '/favicon.png',
+    apple: '/favicon.png',
+  },
   title: 'Just Go | Where App',
   description: 'Remember every place you have ever been. Where App builds a private map of your trips, stored encrypted on your phone. Not on big tech\'s servers. Just yours.',
   alternates: {
