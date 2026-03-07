@@ -117,13 +117,31 @@ Every section should feel this clear. No section should require the user to figu
 
 ## TODO
 
+### Content & Assets
 - [ ] **Loops welcome email** — Create a Loop in app.loops.so: trigger = Contact Created, filter source = landing-page, send welcome email immediately.
 - [ ] **OG image** — Create `public/og-image.png` (1200x630px) for social share previews. Brand gradient on dark bg, Where App wordmark, headline "Remember Every Place You've Ever Been."
-- [x] **Social links** — Instagram, TikTok, X all linked with real URLs in `Footer.tsx`.
-- [x] **Sitemap** — `app/sitemap.ts` covers `/`, `/about`, `/privacy`, `/terms`, `/faq`.
 - [ ] **Favicon** — Add `app/favicon.ico` and define it in `layout.tsx` metadata.
-- [ ] **About team photo** — Replace cartoon illustration with real team photo when available.
+- [ ] **About team photo** — Replace placeholder with real team photo when available.
 - [ ] **Ron founder photo** — Add headshot to the Ron founder card in `/about`.
+
+### Technical SEO
+- [x] **Sitemap** — `app/sitemap.ts` covers `/`, `/about`, `/privacy`, `/terms`, `/faq`.
+- [x] **robots.txt** — `app/robots.ts` allows all crawlers including AI bots (`*`).
+- [x] **Social links** — Instagram, TikTok, X all linked with real URLs in `Footer.tsx`.
+- [ ] **Organization schema** — Add to `app/layout.tsx` alongside existing MobileApplication schema. Include `name`, `url`, `logo`, `sameAs` array pointing to Instagram/TikTok/X. This is the primary signal AI engines use to identify the brand.
+- [ ] **BreadcrumbList schema** — Add to `/about`, `/privacy`, `/terms`, `/faq` page files.
+- [ ] **Speakable schema** — Mark hero description and FAQ answers as `speakable` for voice assistants.
+- [ ] **"Last updated" timestamps** — Add visible "Last updated: [date]" to `/privacy`, `/terms`, `/faq`. AI engines weight recency.
+- [ ] **Core Web Vitals** — Run PageSpeed Insights on `where.app`. Fix any INP/LCP issues. Netlify does not auto-optimize images like Vercel.
+- [ ] **Submit subpages to Google Search Console** — URL Inspection tool: submit `/about`, `/privacy`, `/terms`, `/faq` individually.
+- [ ] **Bing Webmaster Tools** — Bing powers Copilot. Verify site at bing.com/webmasters. Worth 10 minutes for Copilot citation coverage.
+
+### GEO / AEO (AI Engine Visibility)
+- [x] **FAQPage JSON-LD** — Live on `/faq`. Covers 9 questions. Submitted to GSC.
+- [ ] **llms.txt** — Add `public/llms.txt`. Emerging standard: a plain-text file telling AI crawlers what the site is about and which pages to prioritize. Similar to `robots.txt` but for LLMs.
+- [ ] **AEO answer block on `/faq`** — Add a 40-60 word plain-text summary above the accordion. AI engines scrape the visible text, not the accordion contents. e.g. "Where App is a free iPhone app that privately records every trip as a wayline, an encrypted map stored on your device. No tapping required. Only you can see it."
+- [ ] **Blog / guides** — Even 2-3 articles ("how to remember your trips", "why your location data belongs to you") gives AI engines original content to cite. FAQ is good; original articles are better for citation share.
+- [ ] **Monitor AI citation share** — Monthly: search "best private location tracking app for iPhone" on Perplexity, ChatGPT, and Google AI Overview. Track whether Where App appears and how it is described.
 
 ---
 
