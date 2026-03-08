@@ -150,8 +150,8 @@ export default function SignUp({ current }: { current: number }) {
                 }}
               />
             </div>
-            <p className="text-[#888888] text-xs text-center mt-3 font-medium whitespace-nowrap">
-              *We never sell your data. All your data is forever encrypted.
+            <p className="text-[#888888] text-xs text-center mt-3 font-medium">
+              *We never sell your data. Forever encrypted.
             </p>
           </div>
         </div>
