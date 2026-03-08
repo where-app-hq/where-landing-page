@@ -30,8 +30,6 @@ export default function Nav() {
           <a href={`${prefix}#features`} className="text-[#555555] dark:text-[#B8B8B8] hover:text-[#0c0c0c] dark:hover:text-white text-sm font-semibold transition-colors">How It Works</a>
           <a href={`${prefix}#wherebot`} className="text-[#555555] dark:text-[#B8B8B8] hover:text-[#0c0c0c] dark:hover:text-white text-sm font-semibold transition-colors">WhereBot</a>
           <a href={`${prefix}#reviews`} className="text-[#555555] dark:text-[#B8B8B8] hover:text-[#0c0c0c] dark:hover:text-white text-sm font-semibold transition-colors">Reviews</a>
-          <a href="/about" className="text-[#555555] dark:text-[#B8B8B8] hover:text-[#0c0c0c] dark:hover:text-white text-sm font-semibold transition-colors">About</a>
-          <a href="/faq" className="text-[#555555] dark:text-[#B8B8B8] hover:text-[#0c0c0c] dark:hover:text-white text-sm font-semibold transition-colors">FAQ</a>
           <ThemeToggle />
           <a
             href={`${prefix}#signup`}
@@ -79,9 +77,7 @@ export default function Nav() {
           <a href={`${prefix}#features`} onClick={() => setMenuOpen(false)} className="text-[#555555] dark:text-[#B8B8B8] hover:text-[#0c0c0c] dark:hover:text-white text-sm font-semibold transition-colors">How It Works</a>
           <a href={`${prefix}#wherebot`} onClick={() => setMenuOpen(false)} className="text-[#555555] dark:text-[#B8B8B8] hover:text-[#0c0c0c] dark:hover:text-white text-sm font-semibold transition-colors">WhereBot</a>
           <a href={`${prefix}#reviews`} onClick={() => setMenuOpen(false)} className="text-[#555555] dark:text-[#B8B8B8] hover:text-[#0c0c0c] dark:hover:text-white text-sm font-semibold transition-colors">Reviews</a>
-          <a href="/about" onClick={() => setMenuOpen(false)} className="text-[#555555] dark:text-[#B8B8B8] hover:text-[#0c0c0c] dark:hover:text-white text-sm font-semibold transition-colors">About</a>
-          <a href="/faq" onClick={() => setMenuOpen(false)} className="text-[#555555] dark:text-[#B8B8B8] hover:text-[#0c0c0c] dark:hover:text-white text-sm font-semibold transition-colors">FAQ</a>
-          <a href={`${prefix}#signup`} onClick={() => setMenuOpen(false)} className="text-[#555555] dark:text-[#B8B8B8] hover:text-[#0c0c0c] dark:hover:text-white text-sm font-semibold transition-colors">Get Beta Access</a>
+          <a href={`${prefix}#signup`} onClick={() => setMenuOpen(false)} className="btn-gradient-border text-sm font-bold px-4 py-2 rounded-xl text-center">Get Beta Access</a>
           <div className="flex items-center gap-2 text-sm font-semibold text-[#555555] dark:text-[#B8B8B8]">
             <ThemeToggle />
             <span>Toggle light / dark mode</span>
