@@ -118,8 +118,8 @@ Every section should feel this clear. No section should require the user to figu
 ## TODO
 
 ### SEO / GEO Hygiene (minimum, do once)
-- [ ] **OG image** — Create `public/og-image.png` (1200x630px) for social share previews. Brand gradient on dark bg, Where App wordmark, headline "Remember Every Place You've Ever Been."
-- [x] **Favicon** — `public/favicon.png` (gradient W icon), wired in `layout.tsx`.
+- [x] **OG image** — `public/og-image.png` live, wired in `layout.tsx` OG/Twitter metadata.
+- [x] **Favicon** — `public/favicon.png` (W?! icon), wired in `layout.tsx`.
 - [x] **Organization schema** — Live in `app/layout.tsx` with `sameAs` pointing to Instagram/TikTok/X.
 - [ ] **Submit subpages to GSC** — URL Inspection: `/about`, `/privacy`, `/terms`, `/faq`.
 
