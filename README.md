@@ -124,6 +124,7 @@ Every section should feel this clear. No section should require the user to figu
 - [ ] **Submit subpages to GSC** — URL Inspection: `/about`, `/privacy`, `/terms`, `/faq`.
 
 ### Content
+- [ ] **Hero app screenshots** — Update the 3 stacked phone mockup images (`/app-screenshot.png`, `/app-screenshot-2.png`) to more recent screenshots that reflect the current app UI.
 - [ ] **Loops welcome email** — app.loops.so: trigger = Contact Created, filter source = landing-page, send welcome email immediately.
 - [ ] **About team photo** — Replace placeholder with real team photo when available.
 - [ ] **Ron founder photo** — Add headshot to the Ron founder card in `/about`.
