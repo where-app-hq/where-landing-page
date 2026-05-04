@@ -59,10 +59,10 @@ export default function SignUp({ current }: { current: number }) {
         <div className="signup-card-bg rounded-4xl p-8 sm:p-10">
           <div className="text-center mb-8">
             <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0c0c0c] dark:text-white mb-3 leading-tight">
-              <span className="gradient-text">Start remembering today.</span>
+              <span className="gradient-text">Start sharing what you actually do.</span>
             </h2>
             <p className="text-[#555555] dark:text-[#aaaaaa] text-base font-medium">
-              Join the beta and start saving your trips immediately.
+              Join the beta. Save your trips, share your favorites, keep the rest private.
             </p>
           </div>
 
@@ -151,7 +151,7 @@ export default function SignUp({ current }: { current: number }) {
               />
             </div>
             <p className="text-[#888888] text-xs text-center mt-3 font-medium">
-              *We never sell your data. Forever encrypted.
+              *Your wayline, your call. We never sell your data. Forever encrypted.
             </p>
           </div>
         </div>

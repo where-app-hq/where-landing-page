@@ -14,12 +14,12 @@ export default function Hero() {
           {/* Text content */}
           <div className="flex-1 text-center lg:text-left mt-6 lg:mt-0">
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight text-[#0c0c0c] dark:text-white mb-4">
-              Go Anywhere.{' '}
-              <span className="gradient-text">Come Back to Everything.</span>
+              Just Go.{' '}
+              <span className="gradient-text">Share It On Your Terms.</span>
             </h1>
 
             <p className="text-[#555555] dark:text-[#aaaaaa] text-sm sm:text-base leading-relaxed mb-6 max-w-sm sm:max-w-lg mx-auto lg:mx-0 font-medium">
-              Where App is a free app that turns every trip into an encrypted wayline, your personal memory of your experiences.
+              Where App captures every trip automatically and turns it into a beautiful wayline you can share on your terms, with the people you choose.
             </p>
 
             <div className="flex flex-col items-center lg:items-start gap-3">

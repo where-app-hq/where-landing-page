@@ -6,8 +6,8 @@ const features = [
         <circle cx="12" cy="9" r="2.5" />
       </svg>
     ),
-    title: 'Capture Every Experience',
-    body: 'No tapping. No logging. Just go.',
+    title: 'Just Go',
+    body: 'No tapping, no logging, no thinking. Walk, drive, fly. Where catches every meaningful place automatically.',
   },
   {
     icon: (
@@ -16,8 +16,8 @@ const features = [
         <path d="M7 11V7a5 5 0 0 1 10 0v4" />
       </svg>
     ),
-    title: 'Stored on Your Phone',
-    body: 'Encrypted on your device. Not on big tech\'s servers.',
+    title: 'Come Back to a Wayline',
+    body: 'Your trip becomes a beautiful, designed map. Photos, videos, notes, and voice memos, all anchored to where they happened.',
   },
   {
     icon: (
@@ -29,8 +29,8 @@ const features = [
         <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
       </svg>
     ),
-    title: 'Share Only What You Want',
-    body: 'Your waylines. Your call.',
+    title: 'Share on Your Terms',
+    body: 'Send a wayline to a friend. Post it to your story. Keep it private forever. You decide who sees what, and we never expose your live location.',
   },
 ]
 

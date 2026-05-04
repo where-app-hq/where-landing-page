@@ -2,8 +2,8 @@ import { WAITLIST_CURRENT } from '@/lib/waitlist'
 
 const stats = [
   { value: WAITLIST_CURRENT.toLocaleString(), label: 'People Joined' },
-  { value: '100%', label: 'Stored on Your Device' },
-  { value: 'Encrypted', label: 'Always, By Default' },
+  { value: 'You Choose', label: 'Who Sees What' },
+  { value: 'Encrypted', label: 'on Your Phone' },
 ]
 
 export default function TrustBar() {

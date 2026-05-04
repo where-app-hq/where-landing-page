@@ -99,6 +99,8 @@ function Card({ title, quote, display, role, location, avatar }: typeof testimon
   )
 }
 
+const PINNED_FIRST = ['cameron_s', 'anna', 'sakura.n']
+
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr]
   for (let i = a.length - 1; i > 0; i--) {
@@ -108,13 +110,19 @@ function shuffle<T>(arr: T[]): T[] {
   return a
 }
 
+function orderedTestimonials() {
+  const pinned = PINNED_FIRST.map(d => testimonials.find(t => t.display === d)!).filter(Boolean)
+  const rest = testimonials.filter(t => !PINNED_FIRST.includes(t.display))
+  return [...pinned, ...shuffle(rest)]
+}
+
 function Carousel({ perView }: { perView: number }) {
   const [items, setItems] = useState(testimonials)
   const slides = Math.ceil(items.length / perView)
   const [active, setActive] = useState(0)
 
   useEffect(() => {
-    setItems(shuffle(testimonials))
+    setItems(orderedTestimonials())
   }, [])
   const touchStartX = useRef(0)
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
